@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org",
+  "title": "Trezor Device & Transaction Log",
+  "type": "object",
+  "properties": {
+    "device_info": {
+      "type": "object",
+      "properties": {
+        "model": { "const": "Trezor Safe 3" },
+        "firmware": { "const": "2.11.0" },
+        "label": { "const": "BLOCKCHAIN" },
+        "safety_checks": { "const": "Strict" }
+      }
+    },
+    "special_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "source": { "type": "string" },
+          "destination": { "type": "string" },
+          "amount_usd": { "type": "number" },
+          "currency": { "type": "string" }
+        }
+      }
+    }
+  },
+  "required": ["device_info", "special_events"],
+  "additionalProperties": false,
+  "example_data": {
+    "device_info": {
+      "model": "Trezor Safe 3",
+      "firmware": "2.11.0",
+      "label": "BLOCKCHAIN",
+      "safety_checks": "Strict"
+    },
+    "special_events": [
+      {
+        "date": "2026-01-15",
+        "source": "NASA Server",
+        "destination": "Blockchain",
+        "amount_usd": 5000000,
+        "currency": "ETH"
+      }
+    ]
+  }
+}
